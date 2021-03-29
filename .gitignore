@@ -132,3 +132,8 @@ dmypy.json
 # ide
 .idea/
 *.iml
+
+
+# local dev
+local_config.ini
+cog_config/
