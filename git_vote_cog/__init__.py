@@ -4,4 +4,7 @@ from .cog import VoteCog
 
 
 async def setup(bot: Red):
-    bot.add_cog(VoteCog())
+    cog = VoteCog(bot)
+    bot.add_cog(cog)
+
+    await cog.init()

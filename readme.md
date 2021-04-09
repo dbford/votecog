@@ -6,6 +6,7 @@ A Discord-Github interop PR voting system powered by RedBot
 
 * pip install PyGithub
 * pip install JsonPickle
+* pip install AioHttp
 * pip install Red-DiscordBot
 
 ### Unit tests

@@ -137,3 +137,5 @@ dmypy.json
 # local dev
 local_config.ini
 cog_config/
+
+api_token.txt

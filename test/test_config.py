@@ -1,15 +1,9 @@
 import unittest
 
-import jsonpickle
-
 from git_vote_cog.config import *
 
 
 class TestConfig(unittest.TestCase):
-    def test_json(self):
-        config = VoteConfig()
-
-        print(jsonpickle.encode(config, indent=4, unpicklable=False))
 
     def test_dict(self):
         config = VoteConfig()
@@ -29,18 +23,18 @@ class TestConfig(unittest.TestCase):
         config = VoteConfig()
         config.discord.aye_vote_emoji = "-1"
         config.discord.nay_vote_emoji = "+1"
-        config.github.repo_id = 222
+        config.github.repo_name = "222"
 
         vals = config.to_dict()
         check = VoteConfig()
         check.from_dict(vals)
 
-        print(jsonpickle.encode(config, unpicklable=False))
-        print(jsonpickle.encode(check, unpicklable=False))
-        self.assertEqual(config.discord.aye_vote_emoji, check.discord.aye_vote_emoji)
-        self.assertEqual(config.discord.nay_vote_emoji, check.discord.nay_vote_emoji)
-        self.assertEqual(config.github.repo_id, check.github.repo_id)
-        self.assertEqual(jsonpickle.encode(config), jsonpickle.encode(check))
+        # print(jsonpickle.encode(config, unpicklable=False))
+        # print(jsonpickle.encode(check, unpicklable=False))
+        self.assertEqual(config.discord.media.aye_vote_emoji, check.discord.media.aye_vote_emoji)
+        self.assertEqual(config.discord.media.nay_vote_emoji, check.discord.media.nay_vote_emoji)
+        self.assertEqual(config.github.repo_name, check.github.repo_name)
+        # self.assertEqual(jsonpickle.encode(config), jsonpickle.encode(check))
 
         del check.discord.channel_id
         config.discord.from_dict(check.discord.to_dict())
@@ -51,3 +45,7 @@ class TestConfig(unittest.TestCase):
             if f:
                 print("")
             print(f"{k}={v}")
+
+    def test_attr_doc(self):
+        labels = Labels()
+        print(labels.__doc__)

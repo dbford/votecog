@@ -5,13 +5,15 @@ from discord import Message
 
 
 class PollId:
-    def __init__(self, msg: Message):
-        self.channel_id: int = msg.channel.id
-        self.msg_id: int = msg.id
+    def __init__(self, channel_id: int, msg_id: int):
+        self.channel_id: int = channel_id
+        self.msg_id: int = msg_id
+
+    def __str__(self) -> str:
+        return f"[channel={self.channel_id},msg={self.msg_id}]"
 
 
 class Poll:
-
     def __init__(self, msg: Optional[Message], aye_emoji: str, nay_emoji: str):
         # field declarations
         self._msg: Optional[Message] = None
@@ -49,9 +51,12 @@ class Poll:
         if msg is None:
             self.exists = False
         else:
-            self.id = PollId(msg)
+            self.id = PollId(msg.channel.id, msg.id)
             for reaction in msg.reactions:
                 if reaction.emoji == self.aye_emoji:
                     self.aye_count = reaction.count - 1
                 elif reaction.emoji == self.nay_emoji:
                     self.nay_count = reaction.count - 1
+
+    def __str__(self) -> str:
+        return f"Msg(id={self.id},exists={self.exists})"
