@@ -162,7 +162,7 @@ class VoteCog(commands.Cog):
         # Check if api token is setup
         if self.vote_machine is None:
             LOG.warn(
-                f"Encountered needs_vote label in webhook event for repo '{event.repo_name}' PR #{event.pr_id}, but not VoteAPI instance exists (is the api_token set?)")
+                f"Encountered needs_vote label in webhook event for repo '{event.repo_name}' PR #{event.pr_id}, but no VoteAPI instance exists (is the api_token set?)")
             return
 
         # lookup the issue

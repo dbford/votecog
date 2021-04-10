@@ -90,11 +90,6 @@ class Webhook:
         async def say_hello(request: web.Request):
             return web.Response(text='Hello, World!')
 
-        async def github_event(request: web.Request):
-            body = await request.json()
-            print(f"Action: {body.action}")
-            return web.Response(text='Hello, World!')
-
         http.app.add_routes([web.get('/', say_hello)])
         http.app.add_routes([web.post(self.config.path, self._verify_event)])
 

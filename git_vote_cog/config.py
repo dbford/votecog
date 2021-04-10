@@ -19,8 +19,9 @@ class BaseConfig:
             if other_val is None:
                 continue
 
-            if isinstance(v, BaseConfig) and isinstance(other_val, dict):
-                v.from_dict(other_val)
+            if isinstance(v, BaseConfig):
+                if isinstance(other_val, dict):
+                    v.from_dict(other_val)
             else:
                 my_vals[k] = other_val
 

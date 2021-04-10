@@ -42,6 +42,8 @@ class VoteAPI:
         return issue
 
     def new_vote(self, issue: Issue, config: ChannelConfig) -> Vote:
+        """Create a new vote object"""
+
         # create a vote object
         vote = Vote()
         vote.issue = issue
@@ -53,6 +55,8 @@ class VoteAPI:
         return vote
 
     async def load_vote(self, vote: Vote, bot: Red) -> Optional[Vote]:
+        """Reload a vote object that was stored in the VoteDB"""
+
         # lookup issue data
         issue: Issue = await self.get_issue(vote.config.github.repo_name, vote._issue_id)
         if issue is None:
