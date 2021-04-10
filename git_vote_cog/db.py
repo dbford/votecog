@@ -56,7 +56,7 @@ class VoteDB:
     @wrap_async
     def remove(self, vote: Vote):
         with self._open() as con:
-            con.execute("delete from vote where channel_id = ? and msg_id = ?",
+            con.execute("delete from vote where channel_id = ? and message_id = ?",
                         [vote._poll_id.channel_id, vote._poll_id.msg_id])
 
     @wrap_async
