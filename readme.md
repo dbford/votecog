@@ -9,10 +9,3 @@ A Discord-Github interop PR voting system powered by RedBot
 * pip install AioHttp
 * pip install Red-DiscordBot
 
-### Unit tests
-
-TODO
-
-### Running Application
-
-TODO
